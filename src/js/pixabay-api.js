@@ -29,11 +29,14 @@ export async function getPictures(keyWord) {
   try {
     const result = await axios.get('', params);
     const fetchedImages = result.data;
-    if (fetchedImages.totalHits === 0) return [];
+    if (fetchedImages.totalHits === 0) {
+      generateToastError('no_images_found');
+      return;
+    }
 
     requestedPage += 1;
-    resultsLimit = Math.ceil(fetchedImages.totalHits / requestedPage);
-    resultsLimit > requestedPage
+    resultsLimit = Math.ceil(fetchedImages.totalHits / perPage);
+    resultsLimit >= requestedPage
       ? showLoadMoreBtn(true)
       : generateToastInfo('no_more_results');
 
