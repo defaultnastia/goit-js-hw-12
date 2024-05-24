@@ -1,25 +1,246 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-@import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
-
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
   color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    184deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  background-repeat: no-repeat;
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+button:hover {
+  cursor: pointer;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  font: inherit;
+  border-radius: 8px;
+  color: #fff;
+  background-color: rgb(156, 8, 97);
+  transition: 0.5s ease-out;
+  transition-property: background-color, box-shadow;
+}
+
+button:hover {
+  background-color: violet;
+}
+
+body {
+  min-height: 100vh;
+  height: fit-content;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+/* #region === SEARCHBOX === */
+
+.search-wrapper {
+  display: flex;
+  gap: 8px;
+  color: #808080;
+}
+
+.searchbox {
+  width: 280px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid rgb(229, 200, 236);
+  font: inherit;
+  background-color: transparent;
+  color: #fff;
+  transition: 0.5s ease-out;
+  transition-property: color, border-color, box-shadow;
+}
+
+.searchbox:focus,
+.searchbox:focus:hover {
+  outline: none;
+  border-color: violet;
+  box-shadow: 3px 3px 3px violet;
+}
+
+.searchbox::placeholder {
+  color: rgb(229, 200, 236);
+}
+
+.searchbox:hover {
+  border-color: violet;
+}
+
+/* #endregion SEARCHBOX === */
+
+/* #region === GALLERY === */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery li {
+  border: 1px solid violet;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gallery img {
+  width: 360px;
+  height: 152px;
+  object-fit: cover;
+}
+
+.stats-box {
+  /* font-family: inherit; */
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #000000;
+  padding: 4px 20px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: 1px 1px 1px violet;
+}
+
+.stats-box span {
+  font-weight: 400;
+}
+
+/* #endregion === GALLERY === */
+
+/* #region === STATES === */
+.nothing-fetched {
+  border-radius: 50%;
+  margin-top: 50px;
+  width: 250px;
+  height: 250px;
+  background-image: url('../img/noresults.jpg');
+  background-size: 250px;
+}
+/* #endregion === STATES === */
+
+/* #region === LOADER === */
+.loader {
+  animation: rotate 1s infinite;
+  height: 50px;
+  width: 50px;
+}
+
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+.loader:before {
+  animation: ball1 1s infinite;
+  background-color: violet;
+  box-shadow: 30px 0 0 rgb(153, 185, 230);
+  margin-bottom: 10px;
+}
+.loader:after {
+  animation: ball2 1s infinite;
+  background-color: rgb(153, 185, 230);
+  box-shadow: 30px 0 0 violet;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 rgb(153, 185, 230);
+  }
+  50% {
+    box-shadow: 0 0 0 rgb(153, 185, 230);
+    margin-bottom: 0;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 rgb(153, 185, 230);
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 violet;
+  }
+  50% {
+    box-shadow: 0 0 0 violet;
+    margin-top: -20px;
+    transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 violet;
+    margin-top: 0;
+  }
+}
+
+/* #endregion === LOADER === */
+
+/* #region === BARBIES === */
+
+.barbie-text {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  pointer-events: none;
+}
+
+/* #endregion === BARBIES === */

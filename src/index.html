@@ -4,21 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Homework 11</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <load ="partials/header.html" />
+    <form class="search-wrapper">
+      <input
+        name="searchbox"
+        type="text"
+        class="searchbox"
+        placeholder="Search images..."
+      /><button class="search-btn search-btn-js" type="submit">Search</button>
+    </form>
+    <div class="gallery-wrapper">
+      <ul class="gallery"></ul>
+    </div>
+    <span class="loader visually-hidden"></span>
+    <button class="load-more-js visually-hidden">Load more!</button>
 
-    <section>
-      <h1>Example page title</h1>
-      <!-- Path to images as from index.html file -->
-      <img src="./img/javascript.svg" alt="" />
-    </section>
+    <!-- ==== DIFFERENT ==== -->
 
-    <!-- Loads the specified .html file -->
-    <load ="partials/vite-promo.html" />
-
+    <div class="nothing-fetched visually-hidden"></div>
+    <img
+      class="barbie-text"
+      src="./img/barbie-text.png"
+      alt="Barbie"
+      width="200px"
+    />
     <script type="module" src="./main.js"></script>
   </body>
 </html>
